@@ -1,27 +1,37 @@
 ;=================================================
-; Name: Daisha Haymon   
+; Name: Daisha Haymon
 ; Email: dhaym002@ucr.edu
 ; 
-; Lab: lab 3, ex 1
+; Lab: lab 3, ex 2
 ; Lab section: 001
-; TA: Ariel
+; TA: David
 ; 
 ;=================================================
 
+.orig x3000
 
-.ORIG x3000
+LD  R1, DTA_PTR
+LD  R2, datavalue
+LD  R3, ASCII
 
+STR R2, R1, #0
+LD  R4, datavalue2
 
-LD R3, DATA_PTR     ; LOADING PTR INTO R3
-ADD R2, R2, #6      ; LOADING VALUE INTO R2
-STR R2, R3, #0      ; STORING VALUE OF R2 INTO @ MEMORY DATA_PTR
+ADD R1, R1, #1
+STR R4, R1, #0
+ADD R1, R1, #1
+STR R3, R1, #0
 
-ADD R4, R4, #7 ;    ; LOADING VALUE INTO R4
-STR R4, R3 #1       ; STORING VALUE IN R4 INTO MEMORY @ DATA_PTR[DATA_PTR+1]
+;HALT
+;;Remote data
 
+datavalue .FILL #33
+datavalue2 .FILL #35
+ASCII .FILL #48
 
-HALT
+HALT 
 
-DATA_PTR .FILL X4000
+DTA_PTR .FILL x4000
+
 
 .END
